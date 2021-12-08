@@ -8,7 +8,6 @@ public class Campeon {
     private Recurso recurso;
     private int damage;
 
-
     public Campeon(String name, String type, Health health, Recurso recurso, int damage) {
         this.name = name;
         this.type = type;
