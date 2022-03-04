@@ -9,7 +9,6 @@ public class Campeon {
     private int damage;
     private int hit = 0;
 
-
     public Campeon(String name, String type, Health health, Recurso recurso, int damage) {
         this.name = name;
         this.type = type;
