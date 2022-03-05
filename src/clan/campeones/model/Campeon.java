@@ -7,6 +7,11 @@ public class Campeon {
     private Health health;
     private Recurso recurso;
     private int damage;
+    private boolean rightClic;
+    private boolean qHability;
+    private boolean wHability;
+    private boolean ehability;
+    private boolean rhability;
 
     public Campeon(String name, String type, Health health, Recurso recurso, int damage) {
         this.name = name;
@@ -54,5 +59,45 @@ public class Campeon {
 
     public void setDamage(int damage) {
         this.damage = damage;
+    }
+
+    public boolean isRightClic() {
+        return rightClic;
+    }
+
+    public void setRightClic(boolean rightClic) {
+        this.rightClic = rightClic;
+    }
+
+    public boolean isqHability() {
+        return qHability;
+    }
+
+    public void setqHability(boolean qHability) {
+        this.qHability = qHability;
+    }
+
+    public boolean iswHability() {
+        return wHability;
+    }
+
+    public void setwHability(boolean wHability) {
+        this.wHability = wHability;
+    }
+
+    public boolean isEhability() {
+        return ehability;
+    }
+
+    public void setEhability(boolean ehability) {
+        this.ehability = ehability;
+    }
+
+    public boolean isRhability() {
+        return rhability;
+    }
+
+    public void setRhability(boolean rhability) {
+        this.rhability = rhability;
     }
 }

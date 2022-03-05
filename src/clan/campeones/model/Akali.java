@@ -2,45 +2,48 @@ package clan.campeones.model;
 
 public class Akali extends Campeon {
 
-    private boolean visibility = true;
-
     public Akali(String name, String type, Health health, Recurso recurso, int damage) {
         super(name, type, health, recurso, damage);
     }
 
-    public void hit_akali(boolean rightClic, int actuallyEnemyHealth) {
-        if (rightClic) {
-            actuallyEnemyHealth = actuallyEnemyHealth - getDamage();
+    public void hitAkali(Campeon enemy) {
+        if (isRightClic()) {
+            enemy.getHealth().setQuantity(enemy.getHealth().getQuantity() - getDamage());
         }
     }
 
-    public void passive_akali(boolean rightClic, boolean outCircle, int actuallyEnemyHealth) {
-        if ((rightClic) && (outCircle)){
-            actuallyEnemyHealth = (int) (actuallyEnemyHealth - (getDamage() + (0.75*getDamage())));
+    public void passiveAkali(Campeon enemy, boolean outCircle) {
+        if ((isRightClic()) && (outCircle)){
+            enemy.getHealth().setQuantity((int) (enemy.getHealth().getQuantity() - (getDamage()*1.75)));
         }
         else{
-            hit_akali(rightClic, actuallyEnemyHealth);
+            hitAkali(enemy);
         }
     }
 
-    public void fiveKnifes(boolean q, boolean maxRange, int actuallyEnemyHealth) {
-        if (maxRange && q) {
-            actuallyEnemyHealth = (int) (actuallyEnemyHealth - (getDamage()+(getDamage()*0.5)));
-        }if ((maxRange = false) && q ){
-            actuallyEnemyHealth = (int) (actuallyEnemyHealth - getDamage());
+    public void fiveKnifes(Campeon enemy) {
+        boolean maxRangeOfQ = false;
+
+        if (maxRangeOfQ && isqHability()) {
+            enemy.getHealth().setQuantity((int) (enemy.getHealth().getQuantity() - (getDamage()*1.5)));
+        }if ((maxRangeOfQ = false) && isqHability() ){
+            enemy.getHealth().setQuantity((int) (enemy.getHealth().getQuantity()));
+
         }
     }
 
-    public void crepuscularMante(boolean w, boolean in, int durability){
-        Recurso energy = new Recurso("Energy", 250);
-        setRecurso(energy);
-            if (w && in) {
+    public void crepuscularMante(){
+        short wDurability = 7;
+        boolean inW = false;
+        boolean visibility = true;
+        this.getRecurso().setMaxQuantity(280);
+        if (iswHability() && inW) {
                 visibility = false;
             }
             else {
                 visibility = true;
             }
-            if (durability == 0)
-                energy.setQuantiy(200);
+        if (wDurability == 0)
+                this.getRecurso().setMaxQuantity(200);
     }
 }
